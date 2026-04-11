@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/AGENTS.md">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/AGENTS.md" />
+              <option name="updatedContent" value="# AGENTS.md - SauceDemo Selenium POM Framework&#10;&#10;## Architecture Overview&#10;This is a Maven-based Selenium automation framework using Page Object Model (POM) for testing the SauceDemo e-commerce site. Key components:&#10;- **DriverFactory** (`src/main/java/factory/DriverFactory.java`): Manages WebDriver instances with ThreadLocal for thread safety in parallel execution&#10;- **BasePage** (`src/main/java/pages/BasePage.java`): Base class for all page objects with PageFactory initialization and common element interactions&#10;- TestNG for test execution with ExtentReports for detailed reporting&#10;&#10;## Key Patterns&#10;- **Page Object Model**: Each page extends BasePage, uses @FindBy annotations for element locators&#10;- **Element Interactions**: Always use `waitForElement()` before interacting to ensure visibility (10s timeout)&#10;- **Driver Management**: Call `DriverFactory.initDriver()` in test setup, access via `DriverFactory.getDriver()`&#10;- **Headless Chrome**: Default configuration with `--headless=new` and optimized flags for CI/CD&#10;&#10;## Dependencies &amp; Versions&#10;- Selenium 4.18.1&#10;- TestNG 7.9.0&#10;- ExtentReports 5.1.1&#10;- Log4j 2.22.1/2.25.3&#10;- Commons-io 2.15.1&#10;&#10;## Build &amp; Test Workflow&#10;- **Compile**: `mvn clean compile`&#10;- **Run Tests**: `mvn clean test` (uses `testng.xml` suite file)&#10;- **Generate Reports**: ExtentReports output in `test-output/` directory&#10;- **Debug Mode**: Remove `--headless=new` from DriverFactory for local GUI testing&#10;&#10;## Conventions&#10;- Page classes in `src/main/java/pages/`, extend BasePage&#10;- Test classes in `src/test/java/tests/`, use TestNG annotations&#10;- Element locators: Prefer CSS selectors over XPath&#10;- Logging: Use Log4j for test execution logs&#10;- Screenshots: Use commons-io for failure captures&#10;&#10;## Example Usage&#10;```java&#10;// In test setup&#10;WebDriver driver = DriverFactory.initDriver();&#10;driver.get(&quot;https://www.saucedemo.com/&quot;);&#10;&#10;// Page class example&#10;public class LoginPage extends BasePage {&#10;    @FindBy(id = &quot;user-name&quot;) WebElement usernameField;&#10;    &#10;    public void enterUsername(String username) {&#10;        waitForElement(usernameField).sendKeys(username);&#10;    }&#10;}&#10;```" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
