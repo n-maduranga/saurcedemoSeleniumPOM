@@ -8,8 +8,8 @@ public class CartPage extends BasePage {
     @FindBy(id="checkout")
     private WebElement checkoutBtn;
 
-    public Checkout proceedToCheckout() {
+    public CheckoutPage proceedToCheckout() {
         clickElement(checkoutBtn);
-        return new Checkout();
+        return new CheckoutPage();
     }
 }

@@ -15,12 +15,11 @@ public class LoginPage extends BasePage {
     @FindBy(css = "#login-button")
     private WebElement loginButton;
 
-    public ProductPage login(String username, String password) throws InterruptedException {
+    public ProductPage login(String username, String password) {
         clickElement(usernameField);
         enterText(usernameField, username);
         clickElement(passwordField);
         enterText(passwordField, password);
-        Thread.sleep(2000);
         clickElement(loginButton);
         return new ProductPage();
     }

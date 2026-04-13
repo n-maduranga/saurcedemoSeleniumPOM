@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Checkout extends BasePage {
+public class CheckoutPage extends BasePage {
 
     @FindBy(id="first-name")
     private WebElement firstNameInput;

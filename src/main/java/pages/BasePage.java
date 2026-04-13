@@ -37,42 +37,16 @@ public class BasePage {
     protected void clickElement(WebElement element) {
 
         waitForClickability(element).click();
-//        int attempts = 0;
-//        while (attempts<RETRY_COUNT) {
-//            try {
-//                waitForClickability(element).click();
-//                break;
-//            } catch (StaleElementReferenceException | ElementClickInterceptedException e) {
-//                attempts++;
-//                sleep(500);
-//            }
-//        }
-//            // JS fallback ONLY after all retries fail
-//            try {
-//                ((JavascriptExecutor) DriverFactory.getDriver())
-//                        .executeScript("arguments[0].click();", element);
-//            } catch (Exception ex) {
-//                throw new RuntimeException("Failed to click element after retries", ex);
-//            }
 
     }
 
     protected void enterText(WebElement element, String text){
-        int attempts = 0;
-        while (attempts<RETRY_COUNT){
-            try {
+
                 WebElement el = waitForVisibility(element);
                 el.sendKeys(Keys.CONTROL + "a");
                 el.sendKeys(Keys.DELETE);
                 el.sendKeys(text);
-                return; //exit method on success
-            }catch (StaleElementReferenceException e){
-                attempts++;
-                sleep(500);
-            }
         }
-        throw new RuntimeException("Failed to type after retries");
-    }
 
     protected String getElementText(WebElement element) {
         return waitForVisibility(element).getText();
