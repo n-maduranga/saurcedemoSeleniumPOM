@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
 
@@ -17,7 +18,7 @@ public class OrderItemTest extends BaseTest {
         OverviewPage overviewPage = checkoutPage.enterCheckoutInformation("John", "Doe", "12345");
         CompletePage completePage = overviewPage.finishCheckout();
         String message = completePage.getCompleteMessage();
-        System.out.println(message);
+        Assert.assertEquals(message, "THANK YOU FOR YOUR ORDER1");
 
     }
 }
