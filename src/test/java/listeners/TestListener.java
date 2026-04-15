@@ -8,6 +8,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import reports.ExtentManager;
+import utils.ScreenshotUtil;
 
 public class TestListener implements ITestListener {
 
@@ -28,12 +29,19 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         testThreadLocal.get().fail(result.getThrowable());
-//        String path = ScreenshotUtil.captureScreenshot(
-//                DriverFactory.getDriver(),
-//                result.getMethod().getMethodName()
-//        );
-//
-//        testThreadLocal.get().addScreenCaptureFromPath(path);
+
+        // capture screenshot
+        String path = ScreenshotUtil.captureScreenshot(
+                DriverFactory.getDriver(),
+                result.getMethod().getMethodName()
+        );
+
+        // attach to report
+        try {
+            testThreadLocal.get().addScreenCaptureFromPath(path);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
         @Override

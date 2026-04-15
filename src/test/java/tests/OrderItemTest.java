@@ -18,7 +18,7 @@ public class OrderItemTest extends BaseTest {
         OverviewPage overviewPage = checkoutPage.enterCheckoutInformation("John", "Doe", "12345");
         CompletePage completePage = overviewPage.finishCheckout();
         String message = completePage.getCompleteMessage();
-        Assert.assertEquals(message, "THANK YOU FOR YOUR ORDER1");
+        Assert.assertEquals(message, "THANK YOU FOR YOUR ORDER2");
 
     }
 }
