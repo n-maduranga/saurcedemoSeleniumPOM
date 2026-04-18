@@ -8,6 +8,7 @@ import pages.*;
 public class OrderItemTest extends BaseTest {
 
     @Test(dataProvider = "excelData", dataProviderClass = dataprovider.ExcelDataProvider.class)
+   // @Test(retryAnalyzer = retry.RetryAnalyzer.class)
     public void testOrderSingleItem(String firstName, String lastName, String zip)  {
 
         LoginPage login = new LoginPage();
@@ -18,7 +19,7 @@ public class OrderItemTest extends BaseTest {
         OverviewPage overviewPage = checkoutPage.enterCheckoutInformation(firstName, lastName, zip);
         CompletePage completePage = overviewPage.finishCheckout();
         String message = completePage.getCompleteMessage();
-        Assert.assertEquals(message, "THANK YOU FOR YOUR ORDER");
+        Assert.assertEquals(message, "THANK YOU FOR YOUR ORDER1");
 
     }
 }
