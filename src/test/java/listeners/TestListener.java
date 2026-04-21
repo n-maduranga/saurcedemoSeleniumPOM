@@ -28,14 +28,14 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
+        int retryCount = result.getMethod().getCurrentInvocationCount();
+        testThreadLocal.get().fail("Test Failed - Attempt: " + retryCount);
         testThreadLocal.get().fail(result.getThrowable());
-
         // capture screenshot
         String path = ScreenshotUtil.captureScreenshot(
                 DriverFactory.getDriver(),
                 result.getMethod().getMethodName()
         );
-
         // attach to report
         try {
             testThreadLocal.get().addScreenCaptureFromPath(path);
@@ -44,7 +44,7 @@ public class TestListener implements ITestListener {
         }
     }
 
-        @Override
+   @Override
     public void onTestSkipped(ITestResult result) {
             testThreadLocal.get().skip(result.getThrowable());
         }
